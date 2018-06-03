@@ -2,6 +2,7 @@
 
 Simple RESTful API for money transfers between accounts
 
+* Dropwizard application
 * H2 in-memory database
 * Cucumber integration tests
 
@@ -33,6 +34,6 @@ To run the application run the following commands.
 
         java -jar target/money-transfer-api-1.0-SNAPSHOT.jar server config.yaml
 
-* To create transfer between between accounts 1 and 2 run:
+* To create a transfer between accounts 1 and 2 run:
 
 	curl -i -H "Content-Type: application/json" -X POST -d '{"senderAccountId":1,"receiverAccountId":2,"amount": 1.00}' http://localhost:8080/moneytransfer
