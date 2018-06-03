@@ -14,7 +14,7 @@ public class TransferTest {
 
     @Test
     public void deserializesFromJSON() throws Exception {
-        final Transfer transfer = Transfer.builder().userId(12345).senderAccountId(1).receiverAccountId(2).amount(new BigDecimal("11.00")).build();
+        final Transfer transfer = Transfer.builder().senderAccountId(1).receiverAccountId(2).amount(new BigDecimal("11.00")).build();
         System.out.println(transfer.toString());
         assertThat(MAPPER.readValue(fixture("fixtures/transferRequest.json"), Transfer.class).equals(transfer));
     }

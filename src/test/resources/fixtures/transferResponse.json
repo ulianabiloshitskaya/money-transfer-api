@@ -1,5 +1,6 @@
 {
+  "id": 1,
   "senderAccountId":1,
   "receiverAccountId":2,
-  "amount": 11
+  "amount": 12.35
 }

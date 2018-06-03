@@ -12,8 +12,6 @@ import java.math.BigDecimal;
 @EqualsAndHashCode
 public class Transfer {
 
-    public long userId;
-
     public long senderAccountId;
 
     public long receiverAccountId;
