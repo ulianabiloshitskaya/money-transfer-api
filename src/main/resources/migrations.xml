@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="uliana">
+        <createTable tableName="account">
+            <column name="accountnumber" type="long" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="balance" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="transfer">
+            <column name="id" type="long" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="senderAccountId" type="long">
+                <constraints nullable="false"/>
+            </column>
+            <column name="receiverAccountId" type="long">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="uliana" id="initial-data">
+        <sqlFile path="insert-accounts.sql"/>
+    </changeSet>
+</databaseChangeLog>
