@@ -34,8 +34,8 @@ public class MoneyTransferResource {
 
     public TransferEntity createTransfer(Transfer transferRequest){
 
-        Account sender = accountDAO.findById(transferRequest.getSenderAccountId()).orElseThrow(() -> new BadRequestException("Invalid origin account."));
-        Account receiver = accountDAO.findById(transferRequest.getReceiverAccountId()).orElseThrow(() -> new BadRequestException("Invalid destination account."));
+        Account sender = accountDAO.findByIdForUpdate(transferRequest.getSenderAccountId()).orElseThrow(() -> new BadRequestException("Invalid origin account."));
+        Account receiver = accountDAO.findByIdForUpdate(transferRequest.getReceiverAccountId()).orElseThrow(() -> new BadRequestException("Invalid destination account."));
 
         BigDecimal senderBalance = sender.getBalance();
         BigDecimal receiverBalance = receiver.getBalance();

@@ -46,7 +46,7 @@ public class TransferDAOTest {
                 transferDAO.create(new TransferEntity(5L,6L,new BigDecimal("3.33")));
             });
 
-            final List<TransferEntity> transfers = transferDAO.findAll();
+            List<TransferEntity> transfers = daoTestRule.inTransaction(() -> transferDAO.findAll());
             assertThat(transfers).extracting("amount").containsOnly(new BigDecimal("1.11"), new BigDecimal("2.22"), new BigDecimal("3.33"));
             assertThat(transfers).extracting("senderAccountId").containsOnly(1L,3L,5L);
             assertThat(transfers).extracting("receiverAccountId").containsOnly(2L,4L,6L);

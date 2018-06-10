@@ -24,8 +24,8 @@ public class AccountResource {
         return findSafely(personId.get());
     }
 
-    private Account findSafely(long personId) {
-        return peopleDAO.findById(personId).orElseThrow(() -> new NotFoundException("No such user."));
+    private Account findSafely(long accountId) {
+        return peopleDAO.findById(accountId).orElseThrow(() -> new NotFoundException("No such user."));
     }
 
 }

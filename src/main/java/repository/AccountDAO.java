@@ -2,6 +2,7 @@ package repository;
 
 import entity.Account;
 import io.dropwizard.hibernate.AbstractDAO;
+import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
@@ -14,6 +15,10 @@ public class AccountDAO extends AbstractDAO<Account> {
 
     public Optional<Account> findById(Long id) {
         return Optional.ofNullable(get(id));
+    }
+
+    public Optional<Account> findByIdForUpdate(Long id){
+        return Optional.ofNullable(this.currentSession().get(Account.class, id, LockMode.PESSIMISTIC_READ));
     }
 
     public Account create(Account account) {

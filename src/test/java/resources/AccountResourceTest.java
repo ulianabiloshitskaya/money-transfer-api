@@ -23,12 +23,12 @@ public class AccountResourceTest {
             .addResource(new AccountResource(DAO))
             .setTestContainerFactory(new GrizzlyWebTestContainerFactory())
             .build();
-    private Account person;
+    private Account account;
 
     @Before
     public void setup() {
-        person = new Account();
-        person.setAccountNumber(1L);
+        account = new Account();
+        account.setAccountNumber(1L);
     }
 
     @After
@@ -38,11 +38,11 @@ public class AccountResourceTest {
 
     @Test
     public void getAccountSuccess() {
-        when(DAO.findById(1L)).thenReturn(Optional.of(person));
+        when(DAO.findById(1L)).thenReturn(Optional.of(account));
 
         Account foundAccount = RULE.target("/account/1").request().get(Account.class);
 
-        assertThat(foundAccount.getAccountNumber()).isEqualTo(person.getAccountNumber());
+        assertThat(foundAccount.getAccountNumber()).isEqualTo(account.getAccountNumber());
         verify(DAO).findById(1L);
     }
 
