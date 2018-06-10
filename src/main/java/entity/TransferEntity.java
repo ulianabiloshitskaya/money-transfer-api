@@ -19,8 +19,7 @@ import java.math.BigDecimal;
         {
                 @NamedQuery(
                         name = "entity.TransferEntity.findAll",
-                        query = "SELECT p FROM TransferEntity p",
-                        lockMode = LockModeType.PESSIMISTIC_READ
+                        query = "SELECT p FROM TransferEntity p"
                 )
         })
 public class TransferEntity {
